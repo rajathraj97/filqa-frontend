@@ -14,8 +14,14 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 const Profile = () =>{
     const[userDetails,setUserDetails] = useState({})
+    
+  
+
+
+
     const navigate = useNavigate()
     useEffect(()=>{
         const data = jwt_decode(localStorage.getItem('token'))
@@ -78,10 +84,10 @@ const Profile = () =>{
 
     const handelUpdatePassword = async(userDetails) =>{
       const { value: password } = await Swal.fire({
-        title: 'Input username',
+        title: 'Input new password',
         input: 'password',
-        inputLabel: 'UserName',
-        inputPlaceholder: 'Enter user name'
+        inputLabel: 'password',
+        inputPlaceholder: 'Enter password'
       })
       
       if (password) {
@@ -108,7 +114,9 @@ const Profile = () =>{
       <Grid container spacing={2}>
         <Grid xs={6} md={4}>
           <div style={{textAlign:"end"}}>
+            
           <Box>
+            
             <img src={userDetails.image} alt="" style={{width:"255px",height:"255px"}}/><br/>
             <Button onClick={()=>{handelUpdatePassword(userDetails)}} variant='contained' color='secondary'>Change Password </Button>
           </Box>

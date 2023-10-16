@@ -37,11 +37,12 @@ const Navbar =()=>{
             
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            TASK
           </Typography>
           
-          {localStorage.getItem('token') ? <Button onClick={()=>{handelLogout()}}color="inherit">Logout</Button> : <Link to="/login" style={{textDecoration:'none'}}><Button style={{textDecoration:'none'}} color="inherit">Login</Button></Link> }
-          <Link style={{textDecoration:"none"}} to="/profile"><Button  color="inherit"><AccountCircleIcon/></Button></Link>
+          {localStorage.getItem('token') ? <Button onClick={()=>{handelLogout()}}color="inherit">Logout</Button> : <Link to="/login" style={{textDecoration:'none'}}><Button style={{textDecoration:'none',color:"white"}} color="inherit">Login</Button></Link> }
+          {localStorage.getItem('token') ? <Link to="/home" style={{textDecoration:"none",color:"white"}}><Button color="inherit">Home</Button></Link> : null }
+          <Link style={{textDecoration:"none",color:"white"}} to="/profile"><Button  color="inherit"><AccountCircleIcon/></Button></Link>
         </Toolbar>
       </AppBar>
     </Box>

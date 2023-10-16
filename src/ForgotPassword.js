@@ -56,16 +56,22 @@ const ForgotPassword = () =>{
     }
 
     const UpdatePassword = (email,otp,password) =>{
+        if(password.length <= 3){
+            Swal.fire('passwoed length must be greater than 4')
+        }else{
         axios.patch('http://localhost:3001/api/updatepassword',{email:email,otp:otp,password:password})
         .then((res)=>{
             if(res.data.hasOwnProperty('success')){
                 Swal.fire('Password change sucessful')
                 navigate('/login')
+            }else{
+              Swal.fire('otp error')
             }
         })
         .catch((err)=>{
             console.log(err)
         })
+    }
     }
 
     const handelOtp = (value)=>{

@@ -57,7 +57,9 @@ const Login = ()=>{
     }else{
         axios.post('http://localhost:3001/api/login',data)
         .then((res)=>{
-            console.log(res)
+            if(res.data.hasOwnProperty("error")){
+              Swal.fire('invalid email or password')
+            }
         })
         .catch((err)=>{
             console.log(err)
@@ -75,6 +77,10 @@ const Login = ()=>{
             },2000)
             
         }
+        if(res.data.hasOwnProperty('failure')){
+          Swal.fire('OTP Error')
+        }
+        console.log(res)
     })
     .catch((err)=>{
         console.log(err)
